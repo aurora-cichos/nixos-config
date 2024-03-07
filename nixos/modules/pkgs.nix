@@ -4,7 +4,7 @@
 # Configure nixpkgs for the system
 #
 
-{ pkgs, config, ... }:
+{ outputs, pkgs, config, ... }:
 
 {
   nixpkgs = {
