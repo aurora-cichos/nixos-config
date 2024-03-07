@@ -21,7 +21,7 @@
     nixvim = {
       url = "github:nix-community/nixvim-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
-    }
+    };
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
