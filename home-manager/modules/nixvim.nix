@@ -1,5 +1,5 @@
 # Nixvim config
-{ input, ... }: {
+{ inputs, ... }: {
   programs.nixvim = {
     enable = true;
 
