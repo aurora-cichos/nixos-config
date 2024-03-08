@@ -1,7 +1,7 @@
 # Nixvim config
-{ pkgs, nixvim, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
-    flake.homeManager.Modules.nixvim
+    inputs.nixvim.homeManager.Modules.nixvim
   ];
 
   programs.nixvim = {
