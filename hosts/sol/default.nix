@@ -16,8 +16,8 @@
 
     # You can also split up your configuration and import pieces of it here:
     
-    # Import modules
-    ./modules
+    # Import system
+    ../../system
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
