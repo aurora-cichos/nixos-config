@@ -1,75 +1,142 @@
 {
-  description = "my nix config :D";
+  description = "my nixos config :D";
+  # https://dotfiles.sioodmy.dev
 
-  inputs = {
-    # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
-
-    # Home manager
-    home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hardware.url = "github:nixos/nixos-hardware";
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
-  };
-
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-    let
-      inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "aarch64-linux"
-        "i686-linux"
+  outputs = {
+    self,
+    nixpkgs,
+    flake-parts,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
+      systems = [
         "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
+        "aarch64-linux"
       ];
-    in
-    rec {
-      # Your custom packages
-      # Acessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./pkgs { inherit pkgs; }
-      );
-      # Devshell for bootstrapping
-      # Acessible through 'nix develop' or 'nix-shell' (legacy)
-      devShells = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./shell.nix { inherit pkgs; }
-      );
 
-      # Your custom packages and modifications, exported as overlays
-      overlays = import ./overlays { inherit inputs; };
-      # Reusable nixos modules you might want to export
-      # These are usually stuff you would upstream into nixpkgs
-      nixosModules = import ./modules/nixos;
-      # Reusable home-manager modules you might want to export
-      # These are usually stuff you would upstream into home-manager
-      homeManagerModules = import ./modules/home-manager;
+      imports = [
+        {
+          config._module.args._inputs = inputs // {inherit (inputs) self;};
+        }
 
-      # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        sol = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./nixos/configuration.nix
-          ];
+        inputs.flake-parts.flakeModules.easyOverlay
+        inputs.pre-commit-hooks.flakeModule
+        inputs.treefmt-nix.flakeModule
+      ];
+
+      perSystem = {
+        inputs',
+        config,
+        pkgs,
+        ...
+      }: {
+        # provide the formatter for nix fmt
+        formatter = pkgs.alejandra;
+
+        pre-commit = {
+          settings.excludes = ["flake.lock"];
+
+          settings.hooks = {
+            alejandra.enable = true;
+            prettier.enable = true;
+          };
+        };
+        devShells.default = let
+          extra = import ./devShell;
+        in
+          inputs'.devshell.legacyPackages.mkShell {
+            name = "nixos-config";
+            commands = extra.shellCommands;
+            env = extra.shellEnv;
+            packages = with pkgs; [
+              inputs'.agenix.packages.default # provide agenix CLI within flake shell
+              inputs'.catppuccinifier.packages.cli
+              config.treefmt.build.wrapper # treewide formatter
+              nil # nix ls
+              alejandra # nix formatter
+              git # flakes require git, and so do I
+              glow # markdown viewer
+              statix # lints and suggestions
+              deadnix # clean up unused nix code
+              # some python stuff for waybar scripting
+            ];
+          };
+
+        # configure treefmt
+        treefmt = {
+          projectRootFile = "flake.nix";
+
+          programs = {
+            alejandra.enable = true;
+            black.enable = true;
+            deadnix.enable = false;
+            shellcheck.enable = true;
+            shfmt = {
+              enable = true;
+              indent_size = 4;
+            };
+          };
         };
       };
+
+      flake = {
+        nixosConfigurations = import ./hosts inputs;
+      };
+    });
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # project shells
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # a tree-wide formatter
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprcontrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 }
