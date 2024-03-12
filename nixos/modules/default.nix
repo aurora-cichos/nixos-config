@@ -1,8 +1,8 @@
 {
   imports = [
-    ./apps.nix
     ./kde-plasma.nix
     # ./hyprland.nix
+    ./pipewire.nix
     ./pkgs.nix
     ./ssh.nix
     ./system.nix

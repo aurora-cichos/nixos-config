@@ -4,6 +4,9 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
   # You can import other NixOS modules here
   imports = [
+    # Import home-manager
+    inputs.home-manager.nixosModules.home-manager
+
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
 
@@ -40,5 +43,15 @@
     };
   };
 
-  # FIXME: Add the rest of your current configuration
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      luna = import ../home;
+    };
+  };
+
+  environment.systemPackages = [
+    pkgs.git
+    # pkgs.zsh
+  ];
 }
