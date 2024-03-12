@@ -1,4 +1,8 @@
 # Neovim config
-{ inputs, pkgs, ... }: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.neovim.enable = true;
 }

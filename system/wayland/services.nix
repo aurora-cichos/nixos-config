@@ -18,10 +18,10 @@
       enable = true;
       settings = rec {
         initial_session = {
-	  command = "Hyprland";
-	  user = "luna";
+          command = "Hyprland";
+          user = "luna";
         };
-	default_session = initial_session;
+        default_session = initial_session;
       };
     };
 

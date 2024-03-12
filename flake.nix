@@ -49,7 +49,7 @@
             commands = extra.shellCommands;
             env = extra.shellEnv;
             packages = with pkgs; [
-              inputs'.agenix.packages.default # provide agenix CLI within flake shell
+              # inputs'.agenix.packages.default # provide agenix CLI within flake shell
               inputs'.catppuccinifier.packages.cli
               config.treefmt.build.wrapper # treewide formatter
               nil # nix ls
@@ -136,6 +136,10 @@
     };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    catppuccinifier = {
+      url = "github:lighttigerXIV/catppuccinifier";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

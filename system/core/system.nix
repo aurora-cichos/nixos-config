@@ -1,4 +1,8 @@
-{ pkgs, config, ... }: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   services = {
     dbus = {
       packages = with pkgs; [dconf gcr udisks2];

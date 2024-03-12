@@ -33,12 +33,12 @@ in {
     modules =
       [
         {networking.hostName = "sol";}
-	./sol
-	bootloader
-	hmModule
-	nvidia
-	wayland
-	{inherit home-manager;}
+        ./sol
+        bootloader
+        hmModule
+        nvidia
+        wayland
+        {inherit home-manager;}
       ]
       ++ shared;
     specialArgs = {inherit inputs;};
