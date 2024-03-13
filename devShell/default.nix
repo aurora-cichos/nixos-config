@@ -3,13 +3,13 @@
     {
       help = "Rebuild the system using nh os switch";
       name = "sw";
-      command = "nh os switch";
+      command = "sudo nixos-rebuild switch --flake .#sol";
       category = "build";
     }
     {
       help = "Rebuild the system using nh os boot";
       name = "boot";
-      command = "nh os boot";
+      command = "sudo nixos-rebuild boot --flake .#sol"
       category = "build";
     }
     {

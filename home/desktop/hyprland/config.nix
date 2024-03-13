@@ -126,11 +126,11 @@ in {
       "$kw" = "dwindle:no_gaps_when_only";
 
       workspace = [
-        "1, monitor:DP-1"
-        "2, monitor:DP-1"
-        "3, monitor:DP-1"
-        "4, monitor:DP-1"
-        "5, monitor:DP-1"
+        "1, monitor:DP-3"
+        "2, monitor:DP-3"
+        "3, monitor:DP-3"
+        "4, monitor:DP-3"
+        "5, monitor:DP-3"
         "6, monitor:HDMI-A-1"
         "7, monitor:HDMI-A-1"
         "8, monitor:HDMI-A-1"
@@ -138,7 +138,7 @@ in {
       ];
       monitor = [
         ",highrr,auto,1"
-        "DP-1,1920x1080@240,0x0,1"
+        "DP-3,1920x1080@240,0x0,1"
         "HDMI-A-1,1920x1080,1920x0,1"
       ];
     };
