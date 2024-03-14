@@ -4,5 +4,7 @@
     dconf
     libreoffice-fresh
     pulseaudio
+    spotify
+    steam
   ];
 }
