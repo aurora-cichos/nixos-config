@@ -9,7 +9,7 @@
     {
       help = "Rebuild the system using nh os boot";
       name = "boot";
-      command = "sudo nixos-rebuild boot --flake .#sol"
+      command = "sudo nixos-rebuild boot --flake .#sol";
       category = "build";
     }
     {
