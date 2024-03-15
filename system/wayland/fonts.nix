@@ -28,9 +28,9 @@
     fontconfig = {
       defaultFonts = {
         monospace = [
-          "Iosevka Term"
-          "Iosevka Term Nerd Font Complete Mono"
-          "Iosevka Nerd Font"
+          "JetBrainsMono"
+          "JetBrainsMono Nerd Font Complete Mono"
+          "JetBrainsMono Nerd Font"
           "Noto Color Emoji"
         ];
         sansSerif = ["Lexend" "Noto Color Emoji"];
