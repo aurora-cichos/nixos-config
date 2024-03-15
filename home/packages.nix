@@ -4,6 +4,7 @@
     calcurse
     dconf
     gimp
+    keepassxc
     libreoffice-fresh
     pulseaudio
     spotify
