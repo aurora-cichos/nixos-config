@@ -6,6 +6,7 @@
   imports = [
     ./cli
     ./desktop
+    ./misc
 
     ./packages.nix
   ];

@@ -4,6 +4,6 @@
     ./hyprland.nix
     ./kitty.nix
     ./rofi.nix
-    ./wayland.nix
+    ./waybar.nix
   ];
 }
