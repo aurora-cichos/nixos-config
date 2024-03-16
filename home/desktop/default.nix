@@ -1,11 +1,9 @@
 {...}: {
   imports = [
-    ./hyprland
-    ./waybar
-
     ./dunst.nix
-    ./gtk.nix
+    ./hyprland.nix
     ./kitty.nix
     ./rofi.nix
+    ./wayland.nix
   ];
 }
