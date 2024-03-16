@@ -1,30 +1,14 @@
 {pkgs, ...}: {
   fonts = {
     packages = with pkgs; [
-      material-icons
-      material-design-icons
-      roboto
-      work-sans
-      comic-neue
-      source-sans
-      twemoji-color-font
-      comfortaa
-      inter
-      lato
+      jetbrains-mono
       lexend
-      jost
-      dejavu_fonts
-      iosevka-bin
-      noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      jetbrains-mono
-      (nerdfonts.override {fonts = ["Iosevka" "JetBrainsMono"];})
+      (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
 
-    enableDefaultPackages = false;
-
-    # this fixes emoji stuff
+    # fix emojis
     fontconfig = {
       defaultFonts = {
         monospace = [

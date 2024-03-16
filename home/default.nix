@@ -1,17 +1,22 @@
 {
-  inputs,
   config,
+  pkgs,
   ...
 }: {
-  config.home.stateVersion = "23.11";
-  config.home.extraOutputsToInstall = ["doc" "devdoc"];
   imports = [
-    inputs.hyprlock.homeManagerModules.default
-    inputs.hypridle.homeManagerModules.default
-    ./packages.nix
-
     ./cli
     ./desktop
-    ./misc
+
+    ./packages.nix
   ];
+
+  home.username = "luna";
+  home.homeDirectory = "/home/luna";
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
+  programs.home-manager.enable = true;
+  home.stateVersion = "23.11"; # DON'T CHANGE
 }

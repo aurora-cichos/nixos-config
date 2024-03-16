@@ -1,26 +1,14 @@
 {
   config,
-  theme,
   lib,
   ...
 }: let
   pointer = config.home.pointerCursor;
 in {
-  wayland.windowManager.hyprland = with theme.colors; {
+  wayland.windowManager.hyprland = {
     settings = {
       exec-once = [
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        # set cursor for HL itself
-        "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
-
-        # foot terminal server
-        "${lib.optionalString config.programs.foot.server.enable ''run-as-service 'foot --server''}"
       ];
-
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_forever = true;
-      };
 
       xwayland = {
         force_zero_scaling = true;
@@ -28,15 +16,10 @@ in {
 
       input = {
         # keyboard layout
-        kb_layout = "us";
+        kb_layout = "pl";
         kb_options = "caps:escape";
         follow_mouse = 1;
         sensitivity = 0.0;
-        touchpad = {
-          clickfinger_behavior = true;
-          tap-to-click = false;
-          scroll_factor = 0.5;
-        };
       };
 
       general = {
@@ -48,8 +31,8 @@ in {
         border_size = 2;
 
         # active border color
-        "col.active_border" = "rgb(${accent})";
-        "col.inactive_border" = "rgb(${surface0})";
+        # "col.active_border" = "rgb(${accent})";
+        # "col.inactive_border" = "rgb(${surface0})";
 
         # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
         apply_sens_to_raw = 0;
@@ -123,8 +106,6 @@ in {
         no_gaps_when_only = false;
       };
 
-      "$kw" = "dwindle:no_gaps_when_only";
-
       workspace = [
         "1, monitor:DP-3"
         "2, monitor:DP-3"
@@ -138,8 +119,8 @@ in {
       ];
       monitor = [
         ",highrr,auto,1"
-        "DP-3,1920x1080@240,0x0,1"
-        "HDMI-A-1,1920x1080,1920x0,1"
+        "DP-3,1920x1080,0x0,1"
+        "HDMI-A-1,1920x1080@144,0x-1080,1"
       ];
     };
   };
