@@ -16,11 +16,33 @@ in {
       # startup
       exec-once = ''${startupScript}/bin/start'';
 
-      # decor
-      decoration = {
-        shadow_offset = "0 5";
-        "col.shadow" = "rgba(00000099)";
+      # variables
+      general = {
+        border_size = 2;
+        gaps_in = 5;
+        gaps_out = 10;
       };
+      
+      input = {
+        sensitivity = -0.1;
+      };
+
+      workspace = [
+        "1, monitor:DP-3"
+        "2, monitor:DP-3"
+        "3, monitor:DP-3"
+        "4, monitor:DP-3"
+        "5, monitor:DP-3"
+        "6, monitor:HDMI-A-1"
+        "7, monitor:HDMI-A-1"
+        "8, monitor:HDMI-A-1"
+        "9, monitor:HDMI-A-1"
+      ];
+      monitor = [
+        " , preferred, auto, 1"
+        "DP-3, 1920x1080@240, 0x0, 1"
+        "HDMI-A-1, 1920x1080, 1080x0, 1"
+      ];
 
       # binds
       "$mod" = "SUPER";
