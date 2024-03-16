@@ -7,6 +7,4 @@
     ./rofi.nix
     ./waybar.nix
   ];
-
-  home.stateVersion = "23.11";
 }

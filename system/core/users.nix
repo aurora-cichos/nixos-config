@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   users.users.luna = {
     isNormalUser = true;
     description = "luna";

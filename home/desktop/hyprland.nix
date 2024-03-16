@@ -1,5 +1,8 @@
-{pkgs, ...}:
-let
+{
+  pkgs,
+  config,
+  ...
+}: let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
@@ -17,12 +20,15 @@ in {
       exec-once = ''${startupScript}/bin/start'';
 
       # variables
-      general = {
+      general = with config.colorScheme.palette; {
         border_size = 2;
         gaps_in = 5;
         gaps_out = 10;
+
+        "col.active_border" = "rgba(${base0E}ff) rgba(${base0A}ff) 60deg";
+        "col.inactive_border" = "rgba(${base01}ff)";
       };
-      
+
       input = {
         sensitivity = -0.1;
       };
