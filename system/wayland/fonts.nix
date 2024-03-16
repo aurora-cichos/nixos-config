@@ -7,7 +7,7 @@
 
     fontconfig = {
       defaultFonts = {
-        monospace = ["Mononoki Nerd Font Mono" "Noto Color Emoji"];
+        monospace = ["JetBrainsMono Nerd Font Mono" "Noto Color Emoji"];
         # sansSerif = []
         # serif = []
         emoji = ["Noto Color Emoji"];
