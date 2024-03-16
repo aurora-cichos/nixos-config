@@ -20,4 +20,6 @@
       "luna" = import ../../home;
     };
   };
+
+  system.stateVersion = "23.11";
 }

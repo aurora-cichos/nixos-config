@@ -23,6 +23,4 @@
       "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
     ];
   };
-
-  system.stateVersion = "23.11";
 }
