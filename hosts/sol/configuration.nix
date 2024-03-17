@@ -15,6 +15,7 @@
   ];
 
   home-manager = {
+    useGlobalPkgs = true;
     extraSpecialArgs = {inherit inputs;};
     users = {
       "luna" = import ../../home;

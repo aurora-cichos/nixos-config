@@ -10,8 +10,6 @@
     ./cli
     ./desktop
     ./misc
-
-    ./packages.nix
   ];
 
   home.username = "luna";
