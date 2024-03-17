@@ -5,7 +5,7 @@ let
       border: none;
       border-radius: 0;
       font-family: JetBrainsMono Nerd Font;
-      font-size: 14px;
+      font-size: 12px;
       min-height: 0;
     }
 
@@ -17,27 +17,25 @@ let
     #workspaces {
       background-color: #${base00};
       margin: 5px;
-      margin-left: 10px
+      margin-left: 10px;
       border-radius: 5px;
     }
     #workspaces button {
       padding: 5px 10px;
       color: #${base08};
     }
-    #workspaces button.focused {
-      color: #${base02};
-      background-color: #${base05};
+    #workspaces button.active {
+      background-color: #${base03};
       border-radius: 5px;
-    };
+    }
     #workspaces button.hover {
-      background-color: #${base0C};
-      color: #${base08};
+      background-color: #${base01};
     }
 
     #clock, #pulseaudio, #network {
-      background-color: #${base08};
+      background-color: #${base00};
       padding: 5px 10px;
-      margin 5px 0px;
+      margin: 5px 0px;
     }
 
     #clock {
@@ -47,12 +45,12 @@ let
     }
 
     #network {
-      color: #${base0F};
+      color: #${base0E};
       border-radius: 5px 0px 0px 5px;
     }
 
     #pulseaudio {
-      color: #${base09};
+      color: #${base0E};
     }
   '';
 in {
@@ -63,15 +61,15 @@ in {
     settings = {
       mainBar = {
         layer = "top";
-        position = "bottom";
-        height = 30;
-        spacing = 7;
+        position = "top";
+        height = 10;
+        spacing = 0;
 
         modules-left = [
           "hyprland/workspaces"
         ];
         modules-center = [];
-        modules-right = ["pulseaudio" "network" "clock"];
+        modules-right = ["network" "pulseaudio" "clock"];
 
         "hyprland/workspaces" = {
           on-click = "activate";
@@ -91,7 +89,16 @@ in {
           };
 
           persistent_workspaces = {
-            "*" = 10;
+            "1" = [];
+            "2" = [];
+            "3" = [];
+            "4" = [];
+            "5" = [];
+            "6" = [];
+            "7" = [];
+            "8" = [];
+            "9" = [];
+            "10" = [];
           };
         };
 
@@ -100,7 +107,7 @@ in {
           tooltip = true;
           tooltip-format = "{volume}% {format_source}";
           on-click = "${pkgs.killall}/bin/killall pavucontrol || ${pkgs.pavucontrol}/bin/pavucontrol";
-          format = " {icon}\n{volume}%";
+          format = " {icon} {volume}%";
           format-bluetooth = "󰂯 {icon} {volume}%";
           format-muted = "󰝟 ";
           format-icons = {
