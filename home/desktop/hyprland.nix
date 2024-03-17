@@ -41,7 +41,7 @@ in {
         gaps_in = 5;
         gaps_out = 10;
 
-        "col.active_border" = "rgba(${base0E}ff) rgba(${base0A}ff) 60deg";
+        "col.active_border" = "rgba(${base0E}ff)";
         "col.inactive_border" = "rgba(${base01}ff)";
       };
 
@@ -70,14 +70,17 @@ in {
       bind =
         [
           "${mod}, RETURN, exec, kitty"
-          "${mod}, f, exec, firefox"
+
           "${mod}, SPACE, exec, rofi -show drun"
           "${mod}, MINUS, killactive"
+          "${mod}, p, pseudo"
 
           "${mod}, h, movefocus, l"
           "${mod}, l, movefocus, r"
           "${mod}, k, movefocus, u"
           "${mod}, j, movefocus, d"
+
+          "${mod}, f, fullscreen"
         ]
         ++ workspaces;
 
