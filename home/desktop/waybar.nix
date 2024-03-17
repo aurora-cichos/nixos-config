@@ -5,35 +5,36 @@ let
       border: none;
       border-radius: 0;
       font-family: JetBrainsMono Nerd Font;
-      font-size: 12px;
+      font-size: 13px;
       min-height: 0;
     }
 
     window#waybar {
-      background: transparent;
       color: #${base05};
+      background: transparent;
     }
 
     #workspaces {
-      background-color: #${base00};
+      background-color: #${base01};
       margin: 5px;
       margin-left: 10px;
       border-radius: 5px;
     }
     #workspaces button {
       padding: 5px 10px;
-      color: #${base08};
+      color: #${base07};
+      background-color: transparent;
     }
     #workspaces button.active {
-      background-color: #${base03};
+      color: #${base01};
+      background-color: #${base0D};
       border-radius: 5px;
     }
-    #workspaces button.hover {
-      background-color: #${base01};
+    #workspaces button:hover {
     }
 
     #clock, #pulseaudio, #network {
-      background-color: #${base00};
+      background-color: #${base01};
       padding: 5px 10px;
       margin: 5px 0px;
     }
