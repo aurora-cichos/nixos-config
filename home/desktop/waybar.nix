@@ -40,18 +40,18 @@ let
     }
 
     #clock {
-      color: #${base0E};
+      color: #${base0D};
       border-radius: 0px 5px 5px 0px;
       margin-right: 10px;
     }
 
     #network {
-      color: #${base0E};
+      color: #${base0D};
       border-radius: 5px 0px 0px 5px;
     }
 
     #pulseaudio {
-      color: #${base0E};
+      color: #${base0D};
     }
   '';
 in {
