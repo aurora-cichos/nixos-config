@@ -19,7 +19,7 @@
     EDITOR = "nvim";
   };
 
-  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
+  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-terminal-dark;
 
   programs.home-manager.enable = true;
   home.stateVersion = "23.11"; # DON'T CHANGE
