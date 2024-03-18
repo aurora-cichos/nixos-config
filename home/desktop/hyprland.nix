@@ -39,7 +39,7 @@ in {
       general = with config.colorScheme.palette; {
         border_size = 2;
         gaps_in = 5;
-        gaps_out = "0, 10, 10, 10";
+        gaps_out = "5, 10, 10, 10";
 
         "col.active_border" = "rgba(${base0D}ff)";
         "col.inactive_border" = "rgba(${base01}ff)";
