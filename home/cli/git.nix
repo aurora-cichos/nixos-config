@@ -6,7 +6,7 @@
 
     extraConfig = {
       credential.helper = "${
-        pkgs.git.override { withLibsecret = true; }
+        pkgs.git.override {withLibsecret = true;}
       }/bin/git-credential-libsecret";
     };
   };

@@ -1,5 +1,8 @@
-{pkgs, config, ... }: 
-let
+{
+  pkgs,
+  config,
+  ...
+}: let
   css = with config.colorScheme.palette; ''
     * {
       border: none;
@@ -118,7 +121,9 @@ in {
         network = {
           format-wifi = "󰤨";
           format-ethernet = "󰤨";
-          format-alt = "󰤨"; format-disconnected = "󰤭"; tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
+          format-alt = "󰤨";
+          format-disconnected = "󰤭";
+          tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
         };
         clock = {
           format = "󰅐 {:%H:%M}";
