@@ -5,26 +5,15 @@
 }: {
   qt = {
     enable = true;
-
     platformTheme = "qtct";
-
-    style.name = "kvantum";
-  };
-
-  xdg.configFile = {
-    "Kvantum/kvantum.kvconfig".text = ''
-      [General]
-      theme=GraphiteNordDark
-    '';
-
-    "Kvantum/GraphiteNord".source = "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
+    style = {
+      package = pkgs.libsForQt5.breeze-qt5;
+      name = "breeze";
+    };
   };
 
   home.packages = with pkgs; [
-    qt5.qttools
-    qt6Packages.qtstyleplugin-kvantum
-    libsForQt5.qtstyleplugin-kvantum
+    # libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
-    breeze-icons
   ];
 }
