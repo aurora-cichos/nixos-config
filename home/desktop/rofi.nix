@@ -1,5 +1,8 @@
-{pkgs, config, ...}:
-let
+{
+  pkgs,
+  config,
+  ...
+}: let
   inherit (config.lib.formats.rasi) mkLiteral;
 in {
   programs.rofi = {
@@ -32,7 +35,7 @@ in {
         spacing = 0;
         text-color = mkLiteral "@fg";
         padding = mkLiteral "1px";
-        children = [ "prompt" "textbox-prompt-colon" "entry" "case-indicator" ];
+        children = ["prompt" "textbox-prompt-colon" "entry" "case-indicator"];
       };
       "prompt" = {
         spacing = 0;
