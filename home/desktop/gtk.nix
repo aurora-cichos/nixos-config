@@ -13,8 +13,8 @@
     };
 
     font = {
-      name = "Open Sans";
-      size = 11;
+      name = "sansSerif";
+      size = 14;
     };
   };
 
