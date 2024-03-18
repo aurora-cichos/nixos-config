@@ -24,23 +24,21 @@
         padding = 10;
         frame_width = 2;
         transparency = 10;
-        progress_bar = true;
-        progress_bar_frame_width = 0;
       };
 
       urgency_low = {
-        background = "${base00}83";
-        foreground = "${base07}";
+        background = "#${base00}83";
+        foreground = "#${base07}";
         timeout = 5;
       };
       urgency_normal = {
-        background = "${base00}83";
-        foreground = "${base07}";
+        background = "#${base00}83";
+        foreground = "#${base07}";
         timeout = 6;
       };
       urgency_critical = {
         background = "#${base00}83";
-        foreground = "${base0E}";
+        foreground = "#${base0E}";
         frame_color = "#${base0E}80";
         timeout = 0;
       };
