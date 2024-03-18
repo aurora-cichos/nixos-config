@@ -21,6 +21,7 @@
       background-color: #${base01};
       margin: 5px;
       margin-left: 10px;
+      margin-right: 0px;
       border-radius: 5px;
     }
     #workspaces button {
@@ -29,8 +30,8 @@
       background-color: transparent;
     }
     #workspaces button.active {
-      color: #${base01};
-      background-color: #${base0D};
+      color: #${base0D};
+      background-color: transparent;
       border-radius: 5px;
     }
     #workspaces button:hover {
@@ -44,8 +45,7 @@
 
     #clock {
       color: #${base0D};
-      border-radius: 0px 5px 5px 0px;
-      margin-right: 10px;
+      border-radius: 5px;
     }
 
     #network {
@@ -55,6 +55,8 @@
 
     #pulseaudio {
       color: #${base0D};
+      border-radius: 0px 5px 5px 0px;
+      margin-right: 10px;
     }
   '';
 in {
@@ -69,11 +71,9 @@ in {
         height = 10;
         spacing = 0;
 
-        modules-left = [
-          "hyprland/workspaces"
-        ];
-        modules-center = [];
-        modules-right = ["network" "pulseaudio" "clock"];
+        modules-left = ["hyprland/workspaces"];
+        modules-center = ["clock"];
+        modules-right = ["network" "pulseaudio"];
 
         "hyprland/workspaces" = {
           on-click = "activate";
@@ -126,7 +126,7 @@ in {
           tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
         };
         clock = {
-          format = "󰅐 {:%H:%M}";
+          format = "󰅐 {:%Y-%m-%d %H:%M}";
         };
       };
     };
