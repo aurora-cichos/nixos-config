@@ -14,7 +14,7 @@
 
     font = {
       name = "sansSerif";
-      size = 14;
+      size = 12;
     };
   };
 
