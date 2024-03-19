@@ -8,5 +8,6 @@
     ./qt.nix
     ./rofi.nix
     ./waybar.nix
+    ./xdg.nix
   ];
 }

@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    pavucontrol
-  ];
-
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
