@@ -84,6 +84,7 @@ in {
           "${mod}, k, movefocus, u"
           "${mod}, j, movefocus, d"
 
+          "${mod}, v, togglefloating"
           "${mod}, f, fullscreen"
         ]
         ++ workspaces;
