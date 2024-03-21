@@ -16,9 +16,11 @@
 
   hardware = {
     nvidia = {
-      open = true;
+      open = false;
       powerManagement.enable = true;
       modesetting.enable = true;
+      nvidiaSettings = true;
+      package = config.kernelPackages.nvidiaPackages.stable;
     };
     opengl.extraPackages = with pkgs; [nvidia-vaapi-driver];
   };
